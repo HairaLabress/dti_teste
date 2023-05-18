@@ -46,20 +46,20 @@ public class Agenda {
             }
         }
     }
-    //vriar lembrete
+    //Adicionar lembrete
     private static void adicionarLembrete(Scanner scanner, List<Lembrete> lembretes) {
         String nome = lerStringNaoVazia(scanner, "Digite o nome do lembrete: ");
         LocalDate data = Lembrete.lerDataValida(scanner, "Digite a data do lembrete (no formato dd/mm/aaaa): ");
         lembretes.add(new Lembrete(nome, data));
         System.out.println("Lembrete adicionado!");
     }
-    //excluir lembrete
+    //Caso vazio para excluir
     private static void excluirLembrete(Scanner scanner, List<Lembrete> lembretes) {
         if (lembretes.isEmpty()) {
             System.out.println("Não há lembretes para excluir!");
             return;
         }
-    //listar lembretes
+    //listar lembretes 
         listarLembretes(lembretes);
         int indice = lerInteiro(scanner, "Digite o índice do lembrete a ser excluído: ");
 
@@ -67,11 +67,11 @@ public class Agenda {
             System.out.println("Índice inválido!");
             return;
         }
-
+//Excluir lembrete
         lembretes.remove(indice);
         System.out.println("Lembrete excluído!");
     }
-    //caso vazio
+    //caso vazio lista
     private static void listarLembretes(List<Lembrete> lembretes) {
         if (lembretes.isEmpty()) {
             System.out.println("Não há lembretes para listar!");
@@ -79,7 +79,7 @@ public class Agenda {
         }
 
         Collections.sort(lembretes, Comparator.comparing(Lembrete::getData));
-
+//listar lembretes
         System.out.println("=== LISTA DE LEMBRETES ===");
 
         for (int i = 0; i < lembretes.size(); i++) {
@@ -87,7 +87,7 @@ public class Agenda {
             System.out.printf("%d. %s (%s)%n", i, lembrete.getNome(), lembrete.getData().format(Lembrete.FORMATO_DATA));
         }
     }
-    //caso vazio
+    
     private static String lerStringNaoVazia(Scanner scanner, String mensagem) {
         String valor;
 
